@@ -1,0 +1,57 @@
+[
+  {
+    "id": "u1",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg",
+    "displayName": "Vadim Savin"
+  },
+  {
+    "id": "u2",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/elon.png",
+    "displayName": "Elon Musk"
+  },
+  {
+    "id": "u3",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/jeff.jpeg",
+    "displayName": "Jeff"
+  },
+  {
+    "id": "u4",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/zuck.jpeg",
+    "displayName": "Zuck"
+  },
+  {
+    "id": "u5",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/6.png",
+    "displayName": "Alexandra"
+  },
+  {
+    "id": "u6",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/biahaze.jpg",
+    "displayName": "Lukas"
+  },
+  {
+    "id": "u7",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/graham.jpg",
+    "displayName": "Daniil PR"
+  },
+  {
+    "id": "u8",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/11.png",
+    "displayName": "Catalin Editor"
+  },
+  {
+    "id": "u9",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/10.png",
+    "displayName": "Andrei Developer"
+  },
+  {
+    "id": "u10",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/7.png",
+    "displayName": "Marry HR"
+  },
+  {
+    "id": "u11",
+    "avatarUrl": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/2.jpg",
+    "displayName": "Jhon Marketing"
+  }
+]
