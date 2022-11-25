@@ -1,15 +1,42 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, Pressable, Alert } from "react-native";
+import { View } from "../components/Themed";
+import { RootTabScreenProps } from "../types";
+import { Agenda, AgendaEntry } from "react-native-calendars";
+import events from "../assets/data/events.json";
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
+export default function TabOneScreen({
+  navigation,
+}: RootTabScreenProps<"TabOne">) {
+  const renderItem = (reservation: AgendaEntry, isFirst: boolean) => {
+    const fontSize = isFirst ? 16 : 14;
+    const color = isFirst ? "black" : "#43515c";
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+    return (
+      <Pressable
+        style={[styles.item, { height: reservation.height }]}
+        onPress={() => Alert.alert(reservation.name)}
+      >
+        <Text style={{ fontSize, color }}>{reservation.name}</Text>
+      </Pressable>
+    );
+  };
+
+  const renderEmptyDate = () => {
+    return (
+      <View style={styles.emptyDate}>
+        <Text>This is empty date!</Text>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <Agenda
+        items={events}
+        selected="2022-11-24"
+        renderItem={renderItem}
+        renderEmptyDate={renderEmptyDate}
+      />
     </View>
   );
 }
@@ -17,16 +44,18 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  item: {
+    backgroundColor: "white",
+    flex: 1,
+    borderRadius: 5,
+    padding: 10,
+    marginRight: 10,
+    marginTop: 17,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  emptyDate: {
+    height: 15,
+    flex: 1,
+    paddingTop: 30,
   },
 });
