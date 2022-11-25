@@ -16,6 +16,8 @@ import { ColorSchemeName, Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
+import SignInScreen from "../screens/AuthScreens/SignInScreen";
+import SignUpScreen from "../screens/AuthScreens/SignUpScreen";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import TabOneScreen from "../screens/TabOneScreen";
@@ -50,6 +52,25 @@ export default function Navigation({
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  const isAuthenticated = true;
+
+  if (!isAuthenticated) {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen
+          name="SignIn"
+          component={SignInScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUpScreen}
+          options={{ title: "Sign up" }}
+        />
+      </Stack.Navigator>
+    );
+  }
+
   return (
     <Stack.Navigator>
       <Stack.Screen
