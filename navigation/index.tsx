@@ -12,7 +12,7 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
+import { ActivityIndicator, ColorSchemeName, Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -29,6 +29,7 @@ import {
   RootTabScreenProps,
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
+import { useAuthenticationStatus } from "@nhost/react";
 
 export default function Navigation({
   colorScheme,
@@ -52,7 +53,11 @@ export default function Navigation({
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-  const isAuthenticated = true;
+  const { isAuthenticated, isLoading } = useAuthenticationStatus();
+
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
 
   if (!isAuthenticated) {
     return (
