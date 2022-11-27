@@ -1,16 +1,19 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { Pressable, Text, Image, StyleSheet } from "react-native";
 import React from "react";
+import { useChatContext } from "../context/ChatContext";
 
 type UserListItemProps = {
   user: any;
 };
 
 const UserListItem = ({ user }: UserListItemProps) => {
+  const { startDMChatRoom } = useChatContext();
+
   return (
-    <View style={styles.container}>
+    <Pressable onPress={() => startDMChatRoom(user)} style={styles.container}>
       <Image source={{ uri: user.avatarUrl }} style={styles.image} />
       <Text style={styles.name}>{user.displayName}</Text>
-    </View>
+    </Pressable>
   );
 };
 
