@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -8,6 +9,7 @@ import Navigation from "./navigation";
 import { NhostClient, NhostReactProvider } from "@nhost/react";
 import { NhostApolloProvider } from "@nhost/react-apollo";
 import * as SecureStore from "expo-secure-store";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const nhost = new NhostClient({
   subdomain: "mnjdtroppbmdosupvetf",
@@ -24,14 +26,16 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <NhostReactProvider nhost={nhost}>
-          <NhostApolloProvider nhost={nhost}>
-            <Navigation colorScheme={colorScheme} />
-          </NhostApolloProvider>
-        </NhostReactProvider>
-        <StatusBar />
-      </SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <SafeAreaProvider>
+          <NhostReactProvider nhost={nhost}>
+            <NhostApolloProvider nhost={nhost}>
+              <Navigation colorScheme={colorScheme} />
+            </NhostApolloProvider>
+          </NhostReactProvider>
+          <StatusBar />
+        </SafeAreaProvider>
+      </GestureHandlerRootView>
     );
   }
 }
