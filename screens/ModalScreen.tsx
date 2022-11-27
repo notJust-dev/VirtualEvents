@@ -12,6 +12,7 @@ import { AntDesign } from "@expo/vector-icons";
 import CustomButton from "../components/CustomButton";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import { useUserId } from "@nhost/react";
+import { useChatContext } from "../context/ChatContext";
 
 const GetEvent = gql`
   query GetEvent($id: uuid!) {
@@ -56,6 +57,8 @@ export default function ModalScreen({ route }) {
   const event = data?.Event_by_pk;
 
   const [doJoinEvent] = useMutation(JoinEvent);
+
+  const { joinEventChatRoom } = useChatContext();
 
   const onJoin = async () => {
     try {
@@ -120,7 +123,13 @@ export default function ModalScreen({ route }) {
 
         {!joined ? (
           <CustomButton text="Join the event" onPress={onJoin} />
-        ) : null}
+        ) : (
+          <CustomButton
+            text="Join the conversation"
+            type="SECONDARY"
+            onPress={() => joinEventChatRoom(event)}
+          />
+        )}
       </View>
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}

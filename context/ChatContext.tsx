@@ -74,6 +74,27 @@ const ChatContextProvider = ({ children }: { children: React.ReactNode }) => {
     navigation.replace("ChatRoom");
   };
 
+  const joinEventChatRoom = async (event) => {
+    if (!chatClient) {
+      return;
+    }
+    const channelId = `room-${event.id}`;
+    const eventChannel = chatClient.channel("livestream", channelId, {
+      name: event.name,
+    });
+
+    await eventChannel.watch({ watchers: { limit: 100 } });
+    setCurrentChannel(eventChannel);
+
+    navigation.navigate("Root", {
+      screen: "Chat",
+    });
+    navigation.navigate("Root", {
+      screen: "Chat",
+      params: { screen: "ChatRoom" },
+    });
+  };
+
   if (!chatClient) {
     return <ActivityIndicator />;
   }
@@ -83,6 +104,7 @@ const ChatContextProvider = ({ children }: { children: React.ReactNode }) => {
     currentChannel,
     setCurrentChannel,
     startDMChatRoom,
+    joinEventChatRoom,
   };
   return (
     <OverlayProvider>
