@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   NavigationContainer,
@@ -30,6 +30,7 @@ import {
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
 import { useAuthenticationStatus } from "@nhost/react";
+import ChatStackNavigator from "./ChatStackNavigator";
 
 export default function Navigation({
   colorScheme,
@@ -134,6 +135,16 @@ function BottomTabNavigator() {
             </Pressable>
           ),
         })}
+      />
+      <BottomTab.Screen
+        name="Chat"
+        component={ChatStackNavigator}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="chatbox-ellipses-outline" size={25} color={color} />
+          ),
+        }}
       />
       <BottomTab.Screen
         name="TabTwo"
